@@ -33,8 +33,8 @@ export class Vista {
   	@return {Promise}
   */
   cargar(plantilla, base = this.base) {
-    if (!plantilla) //nombre por defecto
-      plantilla = `${this.dirHTML}/${this.constructor.name.toLowerCase()}.html`
+    //nombre por defecto
+    if (!plantilla) plantilla = `${this.dirHTML}/${this.constructor.name.toLowerCase()}.html`; //Nombre del fichero en minusculas.
     return new Promise(resolve => {
       fetch(plantilla)
         .then(respuesta => {
@@ -45,8 +45,8 @@ export class Vista {
               this.asociar()
               this.transferir(base, doc.body)	//De lo contrario, cargamos todo el doc (con html, head, body...)
               this.cargarCSS(`${this.dirCSS}/${this.constructor.name.toLowerCase()}.css`)
-              this.crearHijos()
-							const promesas = [] //Creamos un array de promesas
+              this.crearHijos() //Carga todos los hijos de la vista principal
+              const promesas = [] //Creamos un array de promesas
               for (let hijo in this.hijos)
                 promesas.push(this.hijos[hijo].cargar())
               Promise.all(promesas).then(resolve(true))

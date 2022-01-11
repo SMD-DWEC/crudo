@@ -45,7 +45,7 @@ export class Menu extends Vista{
 	Asocia los manejadores de eventos a los eventos del documento.
 	**/
 	asociar(){
-		this.html.aListar.onclick = this.controlador.listar.bind(this.controlador)
+		this.html.aListar.onclick = this.controlador.verListar.bind(this.controlador)
 		this.html.aCrear.onclick = this.controlador.verCrear.bind(this.controlador)
 	}
 }

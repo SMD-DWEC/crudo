@@ -9,6 +9,7 @@ import {Modelo} from './modelo.js'
 import {Vista} from './vista.js'
 import {VistaPrincipal} from './vistaprincipal.js'
 import {VistaCrear} from './vistacrear.js'
+import {VistaListar} from './vistaListar.js'
 
 /**
 	Controlador principal de la aplicación.
@@ -21,6 +22,7 @@ class Crudo{
 	*/
 	constructor(){
 		this.vistaPrincipal = null	//No podemos iniciar hasta que se complete la carga de window.document
+		this.vistaListar = null	//No podemos iniciar hasta que se complete la carga de window.document
 		this.modelo = new Modelo(configuracion.bdNombre, configuracion.bdVersion)
 
 		//usamos addEventListener para permitir sobrecargar el evento
@@ -52,14 +54,24 @@ class Crudo{
 	/**
 		Atención a la opción de menú "Listar"
 	*/
-	listar(){
-		console.log('crudo.listar')
+	verListar(){
+		console.log('crudo.listar');
+
+		this.vistaPrincipal.cargar("html/vistalistar.html").then(()=> {
+
+			this.vistaListar = new VistaListar(this.controlador, this.vistaPrincipal.html.main);
+
+			this.vistaListar.mostrar()
+		});
+
+
+		//this.vistaPrincipal.verListar();
 	}
 	/**
 		Atención a la opción de menú "verCrear"
 	*/
 	verCrear(){
-		this.vistaPrincipal.verCrear()	
+		this.vistaPrincipal.verCrear();
 	}
 	
 	/**

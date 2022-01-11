@@ -12,6 +12,7 @@
 import {Vista} from './vista.js'
 import {Menu} from './menu.js'
 import {VistaCrear} from './vistacrear.js'
+import {VistaListar} from './vistaListar.js'
 
 export class VistaPrincipal extends Vista{
 	/**
@@ -56,21 +57,32 @@ export class VistaPrincipal extends Vista{
 		//Subvistas. No se cargan hasta tener registradas las referencias a la plantilla.
 		this.hijos = {
 			'menu' : new Menu(this.controlador, this.html.nav),
-			'vistaCrear': new VistaCrear(this.controlador, this.html.main)
+			'vistaCrear': new VistaCrear(this.controlador, this.html.main),
+			//'vistaListar': new VistaListar(this.controlador, this.html.main)
 		}
 	}
 	/**
-	Muestra el formulario para dar de alta un nuevo Objetivo.
+	Muestra el formulario para dar de alta un nuevo país.
 	*/
 	verCrear(){
 		this.ocultarSubvistasMain()
-		this.hijos.crear.mostrar()
+		this.hijos.vistaCrear.mostrar()
 	}
+
 	/**
 	Oculta las subvistas de main
 	*/
 	ocultarSubvistasMain(){
 		//Añadir el resto de subvistas de main
 		this.hijos.vistaCrear.ocultar()
+	}
+
+	/**
+		* Muestra el listado de los paises dados de alta
+	*/
+	verListar(){
+		this.ocultarSubvistasMain()
+
+		//this.hijos.vistaListar.mostrar();
 	}
 }
