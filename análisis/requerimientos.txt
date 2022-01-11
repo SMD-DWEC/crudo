@@ -19,3 +19,10 @@ Versión 1.0
   - Consulta de objeto.
   - Edición de objeto.
   - Búsqueda de objetos.
+
+
+TO-DO:
+- Crear vistaListar.js
+- Crear vistaListar.html
+  - Parrafos con cada uno de los objetos ó hacer una tabla.
+- Al añadir un país se mostrará la lista con todos los paises.

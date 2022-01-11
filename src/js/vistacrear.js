@@ -9,7 +9,7 @@
 */
 
 import {Vista} from './vista.js'
-import {Clase} from './clase.js'
+import {Europa} from './europa.js'
 
 export class VistaCrear extends Vista{
 	/**
@@ -48,6 +48,7 @@ export class VistaCrear extends Vista{
 	asociar(){
 		this.html.btnAceptar.onclick = this.aceptar.bind(this)
 	}
+	
 	/**
 	Atención al botón Aceptar
 	*/
@@ -55,7 +56,7 @@ export class VistaCrear extends Vista{
 		//Aquí se haría la validación de datos.
 		let nombre = this.html.iNombre.value
 		//Construimos el objeto de negocio
-		let objeto = new Clase(nombre)
+		let objeto = new Europa(nombre)
 		this.controlador.aceptarCrear(objeto)
 		this.limpiar()
 	}

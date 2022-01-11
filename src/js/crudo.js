@@ -61,12 +61,13 @@ class Crudo{
 	verCrear(){
 		this.vistaPrincipal.verCrear()	
 	}
+	
 	/**
 	Atención al botón Aceptar de VistaCrear. Crea el nuevo objeto
-	@param objeto {Clase} Objeto a crear.
+	@param {Europa} paises País a insertar.
 	*/
-	aceptarCrear(objeto){
-		this.modelo.insertar(objeto, this.listar.bind(this))
+	aceptarCrear(paises){
+		this.modelo.insertar(paises, this.listar.bind(this))
 	}
 }
 

@@ -1,5 +1,6 @@
 /**
 	clase.js Clase de negocio que representa un objeto.
+	Representa los paises europeos.
 	@author Miguel Jaque <mjaque@migueljaque.com>
 	@license GPL-3.0-or-later
 */
@@ -7,7 +8,7 @@
 /**
 	Clase de negocio que representa un objeto.
 */
-export class Clase{
+export class Europa{
 	//Atributos estáticos
 	static ESTADO = {
 		Estado1: Symbol(),
