@@ -49,7 +49,7 @@ export class Vista {
               const promesas = [] //Creamos un array de promesas
               for (let hijo in this.hijos)
                 promesas.push(this.hijos[hijo].cargar())
-              Promise.all(promesas).then(resolve(true))
+              Promise.all(promesas).then(resolve(true)).catch(error => console.log(error));
             })
         })
         .catch(error => {
@@ -102,4 +102,14 @@ export class Vista {
   crearHijos() {
 		//Este método debe ser sobreescrito por la clase derivada.
 	}
+
+
+  /**
+   * Muestra u oculta la vista
+   * @param {Boolean} bool true para mostrar la vista false para ocultarla 
+   */
+  mostrar(bool)
+  {
+    (bool) ? this.html.div.style.display = "block" : this.html.div.style.display = "none";
+  }
 }

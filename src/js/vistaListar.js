@@ -1,17 +1,15 @@
 /**
-	vistaprincipal.js Vista principal de la aplicación.
-	@author Sergio Matamoros Delgado
+	vistacrear.js Vista de Formulario para la creación de objetivos.
+	@author Miguel Jaque <mjaque@migueljaque.com>
 	@license GPL-3.0-or-later
 */
 
 /**
-	Vista principal de la aplicación.
-	Construye el layout y crea las vistas secundarias (header, nav, main y footer)
+	Vista de Formulario para la creación de objetivos.
 */
 
 import {Vista} from './vista.js'
-import {Menu} from './menu.js'
-import {VistaCrear} from './vistacrear.js'
+import {Europa} from './europa.js'
 
 export class VistaListar extends Vista{
 	/**
@@ -25,34 +23,25 @@ export class VistaListar extends Vista{
 
 		//Referencias a Elementos HTML en la plantilla
 		this.html = {
-			'paises' : null,
-			'btnAceptar' : null
+			'div' : null,
+			'paises' : null
 		}
-
-        console.log("ENTRA LISTAR");
 
 		//Subvistas. No se cargan hasta tener registradas las referencias a la plantilla.
 		this.hijos = {
-            'menu' : new Menu(this.controlador, this.html.nav)
 		}
 
 	}
-
-    mostrar(){
-        console.log("Vista listar");
-    }
 	/**
 	Registra las referencias de la vista a los elementos de la plantilla.
 	Es necesario registrar antes de transferir los elementos de la plantilla al documento principal.
 	@param docPlantilla {Document} Documento cargado desde la plantilla.
 	*/
 	registrar(docPlantilla){
-        console.log("registro");
 		//Guardamos las referencias a los elementos del interfaz
-		this.html.paises = docPlantilla.getElementsByTagName('div')[0]
-		//this.html.btnAceptar = docPlantilla.getElementsByTagName('button')[0]
-
-        this.cargar();
+		this.html.div = docPlantilla.getElementsByTagName('div')[0]
+		console.log(this.html.div);
+		this.html.paises = docPlantilla.getElementsByTagName('table')[0]
 	}
 	/**
 	Asocia los manejadores de eventos a los eventos del documento.
@@ -61,13 +50,8 @@ export class VistaListar extends Vista{
 		//this.html.btnAceptar.onclick = this.aceptar.bind(this)
 	}
 
-    /**
-     * Carga los elementos necesarios
-     */
-    cargar()
-    {
-        console.log("CARGA DATOS");
-        let paises = this.html.paises;
-        console.log(paises);
-    }
+
+	ocultar() {
+		
+	}
 }

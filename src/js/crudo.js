@@ -41,6 +41,7 @@ class Crudo{
 		this.vistaPrincipal = new VistaPrincipal(this, document.body)
 		//inyectamos las dependencias de la configuración
 		this.vistaPrincipal.cargar().then(()=>this.iniciar())
+		.catch(e => console.log(e))
 	}
 	/**
 		Inicia la aplicación.
@@ -48,6 +49,7 @@ class Crudo{
 	*/
 	iniciar(){
 		console.log('crudo.iniciar')
+		this.verCrear();
 	}
 
 	//Atención a Eventos
@@ -57,12 +59,13 @@ class Crudo{
 	verListar(){
 		console.log('crudo.listar');
 
-		this.vistaPrincipal.cargar("html/vistalistar.html").then(()=> {
+		/*this.vistaPrincipal.cargar("html/vistalistar.html").then(()=> {
 
 			this.vistaListar = new VistaListar(this.controlador, this.vistaPrincipal.html.main);
 
 			this.vistaListar.mostrar()
-		});
+		});*/
+		this.vistaPrincipal.verListar();
 
 
 		//this.vistaPrincipal.verListar();

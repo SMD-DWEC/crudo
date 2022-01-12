@@ -87,4 +87,25 @@ export class Modelo{
 		let peticion = this.getTransaccionOS('readwrite').add(paises)
 		peticion.onsuccess = callback
 	}
+
+	/**	
+	 * Devuelve la lista de objetos de la base de datos.
+		@param {Function} callback - Función de callback que se llamará al completar la operación y que recibirá el resultado.
+	**/
+	listar(callback){
+		let resultado = []
+		
+		//Creamos la transacción y obtenemos su OS
+		let os = this.getTransaccionOS("readonly")
+		os.openCursor().onsuccess = function(evento) {
+			let cursor = evento.target.result
+			if (cursor) {
+				let objeto = cursor.value
+				objeto.clave = cursor.primaryKey
+				resultado.push(objeto)
+				cursor.continue()
+ 			}
+ 			accion(resultado)
+		}
+	}	
 }

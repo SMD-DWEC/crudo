@@ -23,6 +23,7 @@ export class VistaCrear extends Vista{
 
 		//Referencias a Elementos HTML en la plantilla
 		this.html = {
+			'div' : null,
 			'iNombre' : null,
 			'btnAceptar' : null
 		}
@@ -39,6 +40,8 @@ export class VistaCrear extends Vista{
 	*/
 	registrar(docPlantilla){
 		//Guardamos las referencias a los elementos del interfaz
+		this.html.div = docPlantilla.getElementsByTagName('div')[0]
+		console.log(this.html.div);
 		this.html.iNombre = docPlantilla.getElementsByTagName('input')[0]
 		this.html.btnAceptar = docPlantilla.getElementsByTagName('button')[0]
 	}
@@ -65,9 +68,5 @@ export class VistaCrear extends Vista{
 	*/
 	limpiar(){
 		this.html.iNombre = ''
-	}
-
-	ocultar() {
-		
 	}
 }
