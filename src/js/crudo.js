@@ -40,7 +40,7 @@ class Crudo{
 		Vista.dirCSS = configuracion.dirCSS
 		this.vistaPrincipal = new VistaPrincipal(this, document.body)
 		//inyectamos las dependencias de la configuración
-		this.vistaPrincipal.cargar().then(()=>this.iniciar())
+		this.vistaPrincipal.cargar().then( e => console.log(e))
 		.catch(e => console.log(e))
 	}
 	/**

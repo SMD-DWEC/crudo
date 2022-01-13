@@ -22,6 +22,8 @@ export class Vista {
     this.dirHTML = Vista.dirHTML
     this.dirCSS = Vista.dirCSS
 
+    this.promesas = [];
+
     this.html = {} //Referencias a Elementos HTML en la plantilla
     this.hijos = {} //Referencias a Subvistas
   }
@@ -35,27 +37,30 @@ export class Vista {
   cargar(plantilla, base = this.base) {
     //nombre por defecto
     if (!plantilla) plantilla = `${this.dirHTML}/${this.constructor.name.toLowerCase()}.html`; //Nombre del fichero en minusculas.
-    return new Promise(resolve => {
-      fetch(plantilla)
-        .then(respuesta => {
-          respuesta.text().then(texto => {
-              const parser = new DOMParser()
-              let doc = parser.parseFromString(texto, "text/html")
-              this.registrar(doc)
-              this.asociar()
-              this.transferir(base, doc.body)	//De lo contrario, cargamos todo el doc (con html, head, body...)
-              this.cargarCSS(`${this.dirCSS}/${this.constructor.name.toLowerCase()}.css`)
-              this.crearHijos() //Carga todos los hijos de la vista principal
-              const promesas = [] //Creamos un array de promesas
-              for (let hijo in this.hijos)
-                promesas.push(this.hijos[hijo].cargar())
-              Promise.all(promesas);
-            })
-        })
-        .catch(error => {
-          throw error
-        })
-    })
+    fetch(plantilla)
+      .then(respuesta => {
+        respuesta.text().then(texto => {
+            const parser = new DOMParser()
+            let doc = parser.parseFromString(texto, "text/html")
+            this.registrar(doc)
+            this.asociar()
+            this.transferir(base, doc.body)	//De lo contrario, cargamos todo el doc (con html, head, body...)
+            this.cargarCSS(`${this.dirCSS}/${this.constructor.name.toLowerCase()}.css`)
+            this.crearHijos() //Carga todos los hijos de la vista principal
+            for (let hijo in this.hijos) {
+              this.promesas.push(this.hijos[hijo]);
+              this.hijos[hijo].cargar();
+              //console.log(hijo);
+            }
+            console.log(this.promesas);
+            //Promise.all(this.promesas)//.then(e=> console.log(e));
+          })
+      })
+      .catch(error => {
+        throw error
+      })
+
+      return Promise.all(this.promesas);
   }
   /**
   	Carga un fichero de CSS en la cabecera del documento.

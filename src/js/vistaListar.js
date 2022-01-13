@@ -9,6 +9,7 @@
 */
 
 import {Vista} from './vista.js'
+import {Modelo} from './modelo.js'
 import {Europa} from './europa.js'
 
 export class VistaListar extends Vista{
@@ -40,14 +41,32 @@ export class VistaListar extends Vista{
 	registrar(docPlantilla){
 		//Guardamos las referencias a los elementos del interfaz
 		this.html.div = docPlantilla.getElementsByTagName('div')[0]
-		console.log(this.html.div);
 		this.html.paises = docPlantilla.getElementsByTagName('table')[0]
+
+		this.iniciar();
 	}
 	/**
 	Asocia los manejadores de eventos a los eventos del documento.
 	**/
 	asociar(){
 		//this.html.btnAceptar.onclick = this.aceptar.bind(this)
+	}
+
+	iniciar()
+	{
+		this.html.paises
+		let tr = document.createElement("tr");
+		
+
+		let td = document.createElement("td");
+		//let model = new Modelo();
+		//let listado = model.listar(this.iniciar);
+
+		//console.log(listado);
+		
+		tr.appendChild(td);
+
+		this.html.paises.appendChild(tr);
 	}
 
 
