@@ -43,7 +43,7 @@ export class VistaListar extends Vista{
 		this.html.div = docPlantilla.getElementsByTagName('div')[0]
 		this.html.paises = docPlantilla.getElementsByTagName('table')[0]
 
-		this.iniciar();
+
 	}
 	/**
 	Asocia los manejadores de eventos a los eventos del documento.

@@ -12,7 +12,7 @@
 export class Modelo{
 	//Atributos
 	#bd	//Conexión con la base de datos
-	#OS1 = 'Objeto'	//ObjectStore (como la "tabla")
+	#OS1 = 'Paises'	//ObjectStore (como la "tabla")
 
 	/**
 		Constructor de Modelo
@@ -105,7 +105,7 @@ export class Modelo{
 				resultado.push(objeto)
 				cursor.continue()
  			}
- 			accion(resultado)
+ 			callback(resultado)
 		}
 	}	
 }

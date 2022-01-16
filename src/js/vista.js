@@ -37,7 +37,7 @@ export class Vista {
   cargar(plantilla, base = this.base) {
     //nombre por defecto
     if (!plantilla) plantilla = `${this.dirHTML}/${this.constructor.name.toLowerCase()}.html`; //Nombre del fichero en minusculas.
-    fetch(plantilla)
+    return new Promise((resolve, reject) => { fetch(plantilla)
       .then(respuesta => {
         respuesta.text().then(texto => {
             const parser = new DOMParser()
@@ -48,19 +48,21 @@ export class Vista {
             this.cargarCSS(`${this.dirCSS}/${this.constructor.name.toLowerCase()}.css`)
             this.crearHijos() //Carga todos los hijos de la vista principal
             for (let hijo in this.hijos) {
-              this.promesas.push(this.hijos[hijo]);
-              this.hijos[hijo].cargar();
+              this.promesas.push(this.hijos[hijo].cargar());
               //console.log(hijo);
             }
             console.log(this.promesas);
+            resolve(this.promesas);
             //Promise.all(this.promesas)//.then(e=> console.log(e));
           })
       })
       .catch(error => {
-        throw error
+        reject(error);
+        //throw error
       })
+    });
 
-      return Promise.all(this.promesas);
+      //return Promise.all(this.promesas);
   }
   /**
   	Carga un fichero de CSS en la cabecera del documento.

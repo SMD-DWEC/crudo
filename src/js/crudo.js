@@ -40,7 +40,7 @@ class Crudo{
 		Vista.dirCSS = configuracion.dirCSS
 		this.vistaPrincipal = new VistaPrincipal(this, document.body)
 		//inyectamos las dependencias de la configuración
-		this.vistaPrincipal.cargar().then( e => console.log(e))
+		this.vistaPrincipal.cargar().then( this.iniciar())
 		.catch(e => console.log(e))
 	}
 	/**
@@ -49,6 +49,7 @@ class Crudo{
 	*/
 	iniciar(){
 		console.log('crudo.iniciar')
+
 		this.verCrear();
 	}
 
@@ -59,14 +60,8 @@ class Crudo{
 	verListar(){
 		console.log('crudo.listar');
 
-		/*this.vistaPrincipal.cargar("html/vistalistar.html").then(()=> {
-
-			this.vistaListar = new VistaListar(this.controlador, this.vistaPrincipal.html.main);
-
-			this.vistaListar.mostrar()
-		});*/
-		this.vistaPrincipal.verListar();
-
+		//Recoge la información de la BD, después muestra la lista
+		this.modelo.listar(this.vistaPrincipal.verListar);
 
 		//this.vistaPrincipal.verListar();
 	}
