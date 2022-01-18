@@ -61,7 +61,7 @@ class Crudo{
 		console.log('crudo.listar');
 
 		//Recoge la información de la BD, después muestra la lista
-		this.modelo.listar(this.vistaPrincipal.verListar);
+		this.modelo.listar(this.vistaPrincipal.verListar.bind(this));
 
 		//this.vistaPrincipal.verListar();
 	}

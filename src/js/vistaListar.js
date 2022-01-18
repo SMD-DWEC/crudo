@@ -70,7 +70,9 @@ export class VistaListar extends Vista{
 	}
 
 
-	ocultar() {
-		
+	mostrar(bool)
+	{
+	  //(bool) ? this.html.div.style.display = "block" : this.html.div.style.display = "none";
+	  (bool) ? $(this.html.div).show() : $(this.html.div).hide();
 	}
 }

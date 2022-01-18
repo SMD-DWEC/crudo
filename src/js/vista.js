@@ -110,9 +110,11 @@ export class Vista {
   /**
    * Muestra u oculta la vista
    * @param {Boolean} bool true para mostrar la vista false para ocultarla 
+   * @deprecated
    */
   mostrar(bool)
   {
-    (bool) ? this.html.div.style.display = "block" : this.html.div.style.display = "none";
+    //Sobreescribir en la clase derivada.
+    throw "El método Vista.Mostrar debe se sobreescrito."
   }
 }
