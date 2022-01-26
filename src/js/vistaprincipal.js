@@ -39,10 +39,10 @@ export class VistaPrincipal extends Vista{
 	*/
 	registrar(docPlantilla){
 		//Guardamos las referencias a los elementos del interfaz
-		this.html.header = docPlantilla.getElementsByTagName('header')[0]
-		this.html.nav = docPlantilla.getElementsByTagName('nav')[0]
-		this.html.main = docPlantilla.getElementsByTagName('main')[0]
-		this.html.footer = docPlantilla.getElementsByTagName('footer')[0]
+		this.html.header = $("header", docPlantilla).get(0)
+		this.html.nav = $("nav", docPlantilla).get(0);//docPlantilla.getElementsByTagName('nav')[0]
+		this.html.main = $("main", docPlantilla).get(0)//docPlantilla.getElementsByTagName('main')[0]
+		this.html.footer = $("footer", docPlantilla).get(0)//docPlantilla.getElementsByTagName('footer')[0]
 	}
 	/**
 	Asocia los manejadores de eventos a los eventos del documento.
@@ -81,10 +81,14 @@ export class VistaPrincipal extends Vista{
 	/**
 		* Muestra el listado de los paises dados de alta
 	*/
-	verListar(){
+	verListar(datos){
 		console.log(this);
 		this.ocultarSubvistasMain()
 
+		//Creamos la interfaz con los datos pasados
+		this.hijos.vistaListar.iniciar(datos)
+
+		//Mostramos la interfaz
 		this.hijos.vistaListar.mostrar(true);
 	}
 

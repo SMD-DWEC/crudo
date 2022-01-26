@@ -40,8 +40,8 @@ export class VistaListar extends Vista{
 	*/
 	registrar(docPlantilla){
 		//Guardamos las referencias a los elementos del interfaz
-		this.html.div = docPlantilla.getElementsByTagName('div')[0]
-		this.html.paises = docPlantilla.getElementsByTagName('table')[0]
+		this.html.div = $("div", docPlantilla).get(0)//docPlantilla.getElementsByTagName('div')[0]
+		this.html.paises = $("table", docPlantilla).get(0)//docPlantilla.getElementsByTagName('table')[0]
 
 
 	}
@@ -52,9 +52,9 @@ export class VistaListar extends Vista{
 		//this.html.btnAceptar.onclick = this.aceptar.bind(this)
 	}
 
-	iniciar()
+	iniciar(datos)
 	{
-		this.html.paises
+		//this.html.paises
 		let tr = document.createElement("tr");
 		
 
@@ -65,6 +65,8 @@ export class VistaListar extends Vista{
 		//console.log(listado);
 		
 		tr.appendChild(td);
+
+		console.log(datos);
 
 		this.html.paises.appendChild(tr);
 	}

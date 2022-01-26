@@ -9,7 +9,7 @@ import {Modelo} from './modelo.js'
 import {Vista} from './vista.js'
 import {VistaPrincipal} from './vistaprincipal.js'
 import {VistaCrear} from './vistacrear.js'
-import {VistaListar} from './vistaListar.js'
+import {VistaListar} from './vistalistar.js'
 
 /**
 	Controlador principal de la aplicación.
@@ -22,7 +22,6 @@ class Crudo{
 	*/
 	constructor(){
 		this.vistaPrincipal = null	//No podemos iniciar hasta que se complete la carga de window.document
-		this.vistaListar = null	//No podemos iniciar hasta que se complete la carga de window.document
 		this.modelo = new Modelo(configuracion.bdNombre, configuracion.bdVersion)
 
 		//usamos addEventListener para permitir sobrecargar el evento
