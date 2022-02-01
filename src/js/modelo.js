@@ -105,7 +105,7 @@ export class Modelo{
 				resultado.push(objeto)
 				cursor.continue()
  			}
- 			callback(resultado)
+ 			if(callback) callback(resultado)
 		}
 	}	
 }
