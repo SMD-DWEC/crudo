@@ -105,8 +105,8 @@ export class Modelo{
 				resultado.push(objeto)
 				cursor.continue()
  			}
+			else
+				if(callback) callback(resultado)
 		}
-		console.log(resultado);
-		if(callback) callback(resultado)
 	}	
 }

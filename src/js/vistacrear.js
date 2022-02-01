@@ -56,7 +56,7 @@ export class VistaCrear extends Vista{
 	*/
 	aceptar(){
 		//Aquí se haría la validación de datos.
-		let nombre = this.html.iNombre.value
+		let nombre = $(this.html.iNombre).val()
 		//Construimos el objeto de negocio
 		let objeto = new Europa(nombre)
 		this.controlador.aceptarCrear(objeto)
@@ -66,7 +66,7 @@ export class VistaCrear extends Vista{
 		Borra los campos del formulario.
 	*/
 	limpiar(){
-		this.html.iNombre = ''
+		$(this.html.iNombre).val('')
 	}
 
 	/**

@@ -52,23 +52,8 @@ export class VistaListar extends Vista{
 		//this.html.btnAceptar.onclick = this.aceptar.bind(this)
 	}
 
-	iniciar(datos)
+	iniciar()
 	{
-		//this.html.paises
-		let tr = document.createElement("tr");
-		
-
-		let td = document.createElement("td");
-		//let model = new Modelo();
-		//let listado = model.listar(this.iniciar);
-
-		//console.log(listado);
-		
-		tr.appendChild(td);
-
-		console.log(datos);
-
-		this.html.paises.appendChild(tr);
 	}
 
 

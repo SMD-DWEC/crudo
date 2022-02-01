@@ -76,7 +76,7 @@ class Crudo{
 	@param {Europa} paises País a insertar.
 	*/
 	aceptarCrear(paises){
-		this.modelo.insertar(paises, this.listar.bind(this))
+		this.modelo.insertar(paises, this.verListar.bind(this))
 	}
 }
 

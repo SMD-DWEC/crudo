@@ -82,7 +82,6 @@ export class VistaPrincipal extends Vista{
 		* Muestra el listado de los paises dados de alta
 	*/
 	verListar(datos){
-		console.log(this);
 		this.ocultarSubvistasMain()
 
 		//Creamos la interfaz con los datos pasados
@@ -90,6 +89,24 @@ export class VistaPrincipal extends Vista{
 
 		//Mostramos la interfaz
 		this.hijos.vistaListar.mostrar(true);
+
+		//Limpiamos la interfaz.
+		$(this.hijos.vistaListar.html.paises).empty();
+
+		//Recorremos los datos de la B.D
+		for(let info of datos ) {
+			//Insertamos datos...
+			let tr = document.createElement("tr");
+			
+
+			let td = document.createElement("td");
+			$(td).append(info.nombre)
+			
+			tr.appendChild(td);
+			
+			//Añadimos a la tabla...
+			$(this.hijos.vistaListar.html.paises).append(tr);
+		}
 	}
 
 	/*mostrarListar() 
