@@ -93,19 +93,29 @@ export class VistaPrincipal extends Vista{
 		//Limpiamos la interfaz.
 		$(this.hijos.vistaListar.html.paises).empty();
 
+		$(".available, .selectable").selectable({ 
+			filter: "li", 
+			cancel: ".ui-selected"
+		})
+		
+		$(".available, .selectable").sortable()
+
 		//Recorremos los datos de la B.D
 		for(let info of datos ) {
 			//Insertamos datos...
-			let tr = document.createElement("tr");
-			
 
-			let td = document.createElement("td");
-			$(td).append(info.nombre)
+			let li = document.createElement("li");
+
+			let span = document.createElement("span");
+			$(span).addClass("ui-icon ui-icon-arrowthick-2-n-s")
+			$(li).append(span);
 			
-			tr.appendChild(td);
+			$(li).append(info.nombre)
+
+			$(li).addClass("ui-widget-content");
 			
 			//Añadimos a la tabla...
-			$(this.hijos.vistaListar.html.paises).append(tr);
+			$(this.hijos.vistaListar.html.paises).append(li);
 		}
 	}
 

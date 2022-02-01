@@ -41,10 +41,11 @@ export class VistaListar extends Vista{
 	registrar(docPlantilla){
 		//Guardamos las referencias a los elementos del interfaz
 		this.html.div = $("div", docPlantilla).get(0)//docPlantilla.getElementsByTagName('div')[0]
-		this.html.paises = $("table", docPlantilla).get(0)//docPlantilla.getElementsByTagName('table')[0]
-
+		this.html.paises = $("ul", docPlantilla).get(0)//docPlantilla.getElementsByTagName('table')[0]
+		$(this.html.paises).addClass("selectable sortable");
 
 	}
+
 	/**
 	Asocia los manejadores de eventos a los eventos del documento.
 	**/

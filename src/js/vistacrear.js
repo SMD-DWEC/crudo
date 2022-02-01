@@ -43,6 +43,7 @@ export class VistaCrear extends Vista{
 		this.html.div = $("div", docPlantilla).get(0)//docPlantilla.getElementsByTagName('div')[0]
 		this.html.iNombre = $("input", docPlantilla).get(0)// docPlantilla.getElementsByTagName('input')[0]
 		this.html.btnAceptar = $("button", docPlantilla).get(0) //docPlantilla.getElementsByTagName('button')[0]
+
 	}
 	/**
 	Asocia los manejadores de eventos a los eventos del documento.
@@ -77,5 +78,8 @@ export class VistaCrear extends Vista{
 	{
 	  //(bool) ? this.html.div.style.display = "block" : this.html.div.style.display = "none";
 	  (bool) ? $(this.html.div).show() : $(this.html.div).hide();
+
+		$("button").addClass("ui-button")
+		$('input').addClass("ui-corner-all");
 	}
 }
