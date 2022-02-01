@@ -81,10 +81,14 @@ export class VistaPrincipal extends Vista{
 	/**
 		* Muestra el listado de los paises dados de alta
 	*/
-	verListar(){
+	verListar(datos){
 		console.log(this);
 		this.ocultarSubvistasMain()
 
+		//Creamos la interfaz con los datos pasados
+		this.hijos.vistaListar.iniciar(datos)
+
+		//Mostramos la interfaz
 		this.hijos.vistaListar.mostrar(true);
 	}
 
